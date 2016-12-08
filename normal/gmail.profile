@@ -3,8 +3,13 @@
 # Author: @ChrisTruncer
 
 https-certificate {
-	set keystore "interactivebrowsing.store";
-	set password "TeamRageQuit";
+	set CN       "gmail.com";
+	set O        "Google GMail";
+	set C        "US";
+	set L        "Mountain View";
+	set OU       "Google Mail";
+	set ST       "CA";
+	set validity "365";
 }
 
 set sleeptime "60000";
